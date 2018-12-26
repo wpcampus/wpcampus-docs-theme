@@ -44,6 +44,6 @@ class Component implements Component_Interface {
 		 * should not bundle translations in your theme. In that case you also need to get rid of the
 		 * second parameter in the following function call.
 		 */
-		load_theme_textdomain( 'wp-rig', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'wp-rig', dirname( dirname( dirname( __FILE__ ) ) ) . '/languages' );
 	}
 }
