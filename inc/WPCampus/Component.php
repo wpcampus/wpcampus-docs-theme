@@ -56,7 +56,7 @@ class Component implements Component_Interface {
 	/**
 	 * Set our Google Font selection.
 	 *
-	 * @return array - the font defintion.
+	 * @return array - the font definition.
 	 */
 	public function google_fonts() {
 		return array(
