@@ -1,10 +1,10 @@
 {
 	"variables": {
 		"--global-font-color": "#333",
-		"--global-font-family": "'Crimson Text', serif",
+		"--global-font-family": "'Open Sans', sans-serif",
 		"--global-font-size": "20",
 		"--global-font-line-height": "1.4",
-		"--highlight-font-family": "'Roboto Condensed', sans-serif",
+		"--highlight-font-family": "'Open Sans', sans-serif",
 		"--content-width": "45",
 		"--dropdown-symbol-width": "0.7em",
 		"--small-font-size": "16",

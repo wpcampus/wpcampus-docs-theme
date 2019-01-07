@@ -28,5 +28,18 @@ class Component implements Component_Interface {
 	/**
 	 * Adds the action and filter hooks to integrate with WordPress.
 	 */
-	public function initialize() {}
+	public function initialize() {
+		add_filter( 'wp_rig_google_fonts', array( $this, 'google_fonts' ) );
+	}
+
+	/**
+	 * Set our Google Font selection.
+	 *
+	 * @return array - the font defintion.
+	 */
+	public function google_fonts() {
+		return array(
+			'Open Sans' => array( '400', '400i', '700', '700i' ),
+		);
+	}
 }
