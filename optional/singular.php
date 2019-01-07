@@ -13,6 +13,7 @@
 namespace WP_Rig\WP_Rig;
 
 get_header();
+get_sidebar();
 ?>
 	<main id="primary" class="site-main">
 		<?php
@@ -26,5 +27,4 @@ get_header();
 		?>
 	</main><!-- #primary -->
 <?php
-get_sidebar();
 get_footer();
