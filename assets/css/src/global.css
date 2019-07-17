@@ -426,16 +426,22 @@ template {
 # Layouts
 --------------------------------------------------------------*/
 .site {
-	margin: 0 auto;
-	max-width: 100%;
+	margin: 3rem auto;
+	padding: 0 20px;
+}
+
+@media (--sidebar-query) {
+	.site {
+		max-width: 920px;
+		padding: 0;
+	}
 }
 
 @media (--sidebar-query) {
 
 	.has-sidebar .site {
-		margin: 0 1em;
 		display: grid;
-		grid-template-columns: 3fr 1fr;
+		grid-template-columns: 1fr 3fr;
 		grid-gap: 2rem;
 		justify-content: center;
 	}
@@ -445,17 +451,20 @@ template {
 	}
 
 	.site-main {
-		grid-column: 1;
+		grid-column: 2;
+		order: 2;
 		min-width: 0;
 	}
 
 	.primary-sidebar {
-		grid-column: 2;
+		grid-column: 1;
+		order: 1;
 		min-width: 0;
 	}
 
 	.site-footer {
 		grid-column: span 2;
+		order: 3;
 	}
 }
 
@@ -487,10 +496,11 @@ h6 {
 	clear: both;
 }
 
-.entry-header h1.entry-title {
+.entry-header h1.entry-title,
+.page-header h1.page-title {
 	font-size: 2rem;
 	line-height: 1.4;
-	margin: 1em 0;
+	margin: 0 0 1em;
 }
 
 dfn,
@@ -636,7 +646,7 @@ table {
 --------------------------------------------------------------*/
 /* stylelint-disable */
 a {
-	color: #0073aa;
+	color: var(--link-color);
 }
 /* stylelint-enable */
 
@@ -753,7 +763,12 @@ select {
 --------------------------------------------------------------*/
 
 .site-header {
-	padding-bottom: 1em;
+	color: #fff;
+}
+
+.header-inside {
+	max-width: 920px;
+	margin: 0 auto;
 }
 
 .header-image {
@@ -770,33 +785,18 @@ select {
 	margin: 0 auto 1em;
 }
 
-.site-branding {
-	text-align: center;
-	padding: 60px 0 1.75em;
-}
-
 .site-title {
-	margin: 0 1em;
 	font-family: var(--highlight-font-family);
 	font-size: 38px;
 	font-weight: 700;
 	line-height: 1.2;
-	color: #333332;
+	color: inherit;
+	margin: 0;
 }
 
 .site-title a {
 	text-decoration: none;
 	color: inherit;
-}
-
-.site-description {
-	margin: 0.4375em 0 0;
-	font-family: var(--highlight-font-family);
-	font-size: 17px;
-	font-weight: inherit;
-	line-height: 1.4;
-	word-wrap: break-word;
-	color: #757575;
 }
 
 /*--------------------------------------------------------------
@@ -990,6 +990,118 @@ select {
 }
 
 
+.site-branding {
+	background: var(--wpc-dark-blue);
+	padding: 1.8rem 20px;
+}
+
+.site-branding .header-inside {
+	display: flex;
+	align-items: center;
+}
+
+.site-branding .site-logo {
+	display: inline-block;
+	max-width: 270px;
+	height: auto;
+	vertical-align: middle;
+}
+
+.site-branding .site-label {
+	display: inline-block;
+	line-height: 45px;
+	vertical-align: middle;
+	margin: 0 0 0 15px;
+	font-size: 40px;
+	text-transform: uppercase;
+}
+
+.site-branding .site-logo-wrapper {
+	flex: 1;
+}
+
+.site-branding .site-logo-wrapper a {
+	display: block;
+	color: #fff !important;
+	text-decoration: none;
+}
+
+.site-branding .search-toggle {
+	background: url(../images/magnifying-glass.svg) center center no-repeat;
+	background-size: auto 30px;
+	width: 30px;
+	height: 30px;
+	border: 0;
+	opacity: 1;
+	transition: 1s opacity ease;
+}
+
+.site-search {
+	background: var(--wpc-orange);
+	padding: 0;
+	height: 0;
+	opacity: 0;
+	transition: 1s all ease;
+	overflow: hidden;
+}
+
+.site-search .search-form {
+	display: flex;
+	align-items: center;
+}
+
+.site-search .search-form label {
+	align-self: center;
+	margin: 0 15px 0 0;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.site-search .search-form .search-field {
+	display: block;
+	width: 100%;
+	padding: 0.5rem;
+	flex: 1;
+	border: 0;
+	line-height: 24px;
+}
+
+.site-search .search-form .search-field:placeholder {
+	opacity: 0.6;
+}
+
+.site-search .search-form .search-button {
+	display: block;
+	width: 25px;
+	height: 25px;
+	background-size: auto 25px;
+	font-size: 0.8rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin: 0 0 0 10px;
+	border: 0;
+}
+
+.site-search .search-form .search-cancel {
+	background: url(../images/close.svg) center center no-repeat;
+	margin-left: 15px;
+}
+
+.site-search .search-form .search-submit {
+	background: url(../images/magnifying-glass.svg) center center no-repeat;
+}
+
+.site-header.search-open .search-toggle {
+	opacity: 0;
+}
+
+.site-header.search-open .site-search {
+	opacity: 1;
+	padding: 1.5rem 20px;
+	height: auto;
+}
+
 /*--------------------------------------------------------------
 # Content navigation
 --------------------------------------------------------------*/
@@ -1032,10 +1144,11 @@ select {
 # Footer
 --------------------------------------------------------------*/
 .site-footer {
-	margin: 1em 0 0;
-	padding: 2em 0;
+	padding: 0 3rem;
 	font-family: var(--highlight-font-family);
+	border-top: 1px solid #ccc;
 }
+
 
 .site-info {
 	text-align: center;

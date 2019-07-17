@@ -31,6 +31,7 @@ class Component implements Component_Interface {
 	public function initialize() {
 		add_action( 'after_setup_theme', array( $this, 'setup_theme' ) );
 		add_filter( 'wp_rig_google_fonts', array( $this, 'google_fonts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_search_script' ) );
 	}
 
 	/**
@@ -61,6 +62,26 @@ class Component implements Component_Interface {
 	public function google_fonts() {
 		return array(
 			'Open Sans' => array( '400', '400i', '700', '700i' ),
+		);
+	}
+
+	/**
+	 * Enqueues search script.
+	 */
+	public function enqueue_search_script() {
+
+		// If the AMP plugin is active, return early.
+		if ( wp_rig()->is_amp() ) {
+			return;
+		}
+
+		// Enqueue the search script.
+		wp_enqueue_script(
+			'wp-rig-search',
+			get_theme_file_uri( '/assets/js/search.min.js' ),
+			array(),
+			wp_rig()->get_asset_version( get_theme_file_path( '/assets/js/search.min.js' ) ),
+			false
 		);
 	}
 }

@@ -1,5 +1,10 @@
 {
 	"variables": {
+		"--wpc-dark-blue": "#2e3641",
+		"--wpc-royal-blue": "#1159bd",
+		"--wpc-light-blue": "#e4eaf4",
+		"--wpc-orange": "#A76739",
+		"--link-color": "var(--wpc-royal-blue)",
 		"--global-font-color": "#333",
 		"--global-font-family": "'Open Sans', sans-serif",
 		"--global-font-size": "20",

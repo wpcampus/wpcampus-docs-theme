@@ -45,6 +45,15 @@ if ( is_404() ) {
 		</h1>
 	</header><!-- .page-header -->
 	<?php
+} elseif ( is_post_type_archive() ) {
+	?>
+	<header class="page-header">
+		<h1 class="page-title"><?php post_type_archive_title( '', false ); ?></h1>
+		<?php
+		the_archive_description( '<div class="archive-description">', '</div>' );
+		?>
+	</header><!-- .page-header -->
+	<?php
 } elseif ( is_archive() ) {
 	?>
 	<header class="page-header">

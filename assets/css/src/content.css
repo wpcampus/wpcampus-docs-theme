@@ -31,6 +31,10 @@
 	font-size: 80%;
 }
 
+.entry-title + .entry-meta {
+	margin-top: -1.2em;
+}
+
 /* Hides the update date and time. */
 .updated:not(.published) {
 	display: none;
@@ -53,11 +57,6 @@
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
-	padding-right: 1.5rem;
-	padding-left: 1.5rem;
-	/* stylelint-disable */
-	max-width: var(--content-width)rem;
-	/* stylelint-enable */
 }
 
 .page-title,
@@ -68,11 +67,6 @@
 .page-navigation,
 .comments-area {
 	margin: 1.5em auto;
-	padding-right: 1.5rem;
-	padding-left: 1.5rem;
-	/* stylelint-disable */
-	max-width: var(--content-width)rem;
-	/* stylelint-enable */
 }
 
 @media (--content-query) {
@@ -92,6 +86,10 @@
 	}
 }
 
+article *:first-child {
+	margin-top: 0;
+}
+
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
@@ -103,8 +101,6 @@
 
 .entry-footer {
 	clear: both;
-	padding: 1.5em 1.5rem 3em;
-	border-bottom: 1px solid #111;
 }
 
 @media (--content-query) {

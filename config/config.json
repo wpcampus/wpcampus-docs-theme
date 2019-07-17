@@ -1,1 +1,24 @@
-{}
+{
+	"theme": {
+		"slug": "wpcampus-docs-theme",
+		"name": "WPCampus: Docs",
+		"author": "The WPCampus Community",
+		"PHPNamespace": "WPCampus\\WPCampus"
+	},
+	"dev": {
+		"browserSync": {
+			"proxyURL": "localwpcampusdocs.org",
+			"https": true,
+			"keyPath": "/Users/rachelcarden/Sites/localwpcampusdocs.org/app/public/wp-content/themes/wprig-wpcampus-docs-theme/BrowserSync/wp-rig-browser-sync-key.key",
+			"certPath": "/Users/rachelcarden/Sites/localwpcampusdocs.org/app/public/wp-content/themes/wprig-wpcampus-docs-theme/BrowserSync/wp-rig-browser-sync-cert.crt"
+		},
+		"debug": {
+			"styles": true,
+			"scripts": true,
+			"phpcs": true
+		}
+	},
+	"export": {
+		"compress": false
+	}
+}

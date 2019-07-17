@@ -31,13 +31,35 @@ namespace WP_Rig\WP_Rig;
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'wp-rig' ); ?></a>
+	<a class="wpc-skip-to-content search-toggle search-force" href="#search"><?php esc_html_e( 'Skip to search', 'wp-rig' ); ?></a>
+	<?php
 
-	<header id="masthead" class="site-header">
+	// Print network banner.
+	if ( function_exists( 'wpcampus_print_network_banner' ) ) {
+		wpcampus_print_network_banner( array( 'skip_nav_id' => 'primary' ) );
+	}
+
+	$search_query = get_search_query();
+
+	$site_header_class = 'site-header';
+
+	if ( ! empty( $search_query ) ) {
+		$site_header_class .= ' search-open';
+	}
+
+	?>
+	<header id="masthead" class="<?php echo $site_header_class; /* phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped */ ?>">
 		<?php get_template_part( 'template-parts/header/custom_header' ); ?>
 
 		<?php get_template_part( 'template-parts/header/branding' ); ?>
 
 		<?php get_template_part( 'template-parts/header/navigation' ); ?>
 	</header><!-- #masthead -->
+	<?php
+
+	if ( function_exists( 'wpcampus_print_network_notifications' ) ) {
+		wpcampus_print_network_notifications();
+	}
+
+	?>
+	<div id="page" class="site">
